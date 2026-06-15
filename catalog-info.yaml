@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: wrerqweewrerererwerwre
+  title: Rewrerwerwerwe
+  description: A static HTML website. Just like the good old days.
+  links:
+    - url: https://roadiehq.github.io/wrerqweewrerererwerwre/
+      title: Live website
+  annotations:
+    github.com/project-slug: roadiehq/wrerqweewrerererwerwre
+spec:
+  type: website
+  owner: user:dtuite
+  lifecycle: experimental

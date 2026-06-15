@@ -1,0 +1,8 @@
+site_name: Rewrerwerwerwe
+
+nav:
+  - Home: index.md
+
+plugins:
+  - monorepo
+  - techdocs-core
