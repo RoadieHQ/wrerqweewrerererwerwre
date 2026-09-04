@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: Payments API
+  version: 2.1.0
+  description: Has a cross-file $ref, so it proves bundling on lazy load.
+paths:
+  /payments:
+    get:
+      summary: List payments
+      responses:
+        '200':
+          description: All payments, unpaged
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './shared.yaml#/Payment'
+  /payments/{paymentId}:
+    get:
+      summary: Fetch one payment
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The payment
+          content:
+            application/json:
+              schema:
+                $ref: './shared.yaml#/Payment'

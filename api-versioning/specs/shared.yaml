@@ -1,0 +1,42 @@
+Money:
+  type: object
+  required:
+    - amount
+    - currency
+  properties:
+    amount:
+      type: number
+      format: double
+    currency:
+      type: string
+      example: EUR
+
+Payment:
+  type: object
+  required:
+    - id
+    - amount
+  properties:
+    id:
+      type: string
+    amount:
+      $ref: '#/Money'
+    status:
+      type: string
+      enum:
+        - pending
+        - settled
+        - failed
+    createdAt:
+      type: string
+      format: date-time
+
+PaymentRequest:
+  type: object
+  required:
+    - amount
+  properties:
+    amount:
+      $ref: '#/Money'
+    reference:
+      type: string

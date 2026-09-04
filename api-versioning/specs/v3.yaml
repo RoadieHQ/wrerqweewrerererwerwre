@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Payments API
+  version: 3.0.0
+  description: Newest version. Discovered as the default.
+paths:
+  /payments:
+    get:
+      summary: List payments
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+      responses:
+        '200':
+          description: A page of payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './shared.yaml#/Payment'
+    post:
+      summary: Create a payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './shared.yaml#/PaymentRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: './shared.yaml#/Payment'
+  /payments/{paymentId}:
+    get:
+      summary: Fetch one payment
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The payment
+          content:
+            application/json:
+              schema:
+                $ref: './shared.yaml#/Payment'
+        '404':
+          description: Not found
+  /refunds:
+    post:
+      summary: Refund a payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - paymentId
+              properties:
+                paymentId:
+                  type: string
+                amount:
+                  $ref: './shared.yaml#/Money'
+      responses:
+        '202':
+          description: Refund accepted
