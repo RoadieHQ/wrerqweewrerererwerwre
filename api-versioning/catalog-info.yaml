@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: payments-api
+  description: Versioned payments API. Default is the newest version.
+  annotations:
+    roadie.io/api-definitions-path: ./specs
+spec:
+  type: openapi
+  lifecycle: production
+  owner: team-a
+  definition:
+    $openapi: ./specs/v3.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: payments-api-pinned
+  description: Same specs folder, but pinned to an older default version.
+  annotations:
+    roadie.io/api-definitions-path: ./specs
+    roadie.io/api-default-version: '2.1.0'
+spec:
+  type: openapi
+  lifecycle: production
+  owner: team-a
+  definition:
+    $openapi: ./specs/v2.1.yaml

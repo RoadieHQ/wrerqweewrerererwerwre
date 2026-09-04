@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: Payments API
+  version: 1.0.0
+  description: Oldest version. Self contained, no cross-file refs.
+paths:
+  /v1/payments:
+    get:
+      summary: List payments
+      responses:
+        '200':
+          description: All payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    amount_cents:
+                      type: integer
+                    currency:
+                      type: string
